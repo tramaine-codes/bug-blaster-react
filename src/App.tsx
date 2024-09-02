@@ -4,7 +4,7 @@ import TicketForm from "./components/TicketForm";
 import TicketList from "./components/TicketList";
 import ticketReducer, { type TicketState } from "./reducers/ticketReducer";
 import "./styles.css";
-import { sortTickets } from "./utilities/sortingUtilities";
+import { sortTickets } from "./utilities/sortUtilities";
 
 export default function App() {
 	const [state, dispatch] = useReducer(ticketReducer, {

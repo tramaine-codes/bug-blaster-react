@@ -38,7 +38,8 @@ export default function ticketReducer(
 				editingTicket: undefined,
 			};
 		case "ticket:delete":
-			if (state.editingTicket && state.editingTicket.id === action.value.id) {
+			// if (state.editingTicket && state.editingTicket.id === action.value.id) {
+			if (state.editingTicket?.id === action.value.id) {
 				return {
 					...state,
 					tickets: state.tickets.filter(
