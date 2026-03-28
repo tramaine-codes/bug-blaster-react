@@ -1,5 +1,5 @@
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Ticket, TicketAction } from "../reducers/ticketReducer";
 
 interface TicketFormProps {
@@ -11,19 +11,9 @@ export default function TicketForm({
   dispatch,
   editingTicket,
 }: TicketFormProps) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState<"1" | "2" | "3">("1");
-
-  useEffect(() => {
-    if (editingTicket) {
-      setTitle(editingTicket.title);
-      setDescription(editingTicket.description);
-      setPriority(editingTicket.priority);
-    } else {
-      clearForm();
-    }
-  }, [editingTicket]);
+  const [title, setTitle] = useState(editingTicket?.title ?? "");
+  const [description, setDescription] = useState(editingTicket?.description ?? "");
+  const [priority, setPriority] = useState<"1" | "2" | "3">(editingTicket?.priority ?? "1");
 
   const priorityLabels = {
     1: "Low",
@@ -56,8 +46,9 @@ export default function TicketForm({
   return (
     <form onSubmit={handleSubmit} className="ticket-form">
       <div>
-        <label>Title</label>
+        <label htmlFor="title">Title</label>
         <input
+          id="title"
           type="text"
           value={title}
           className="form-input"
@@ -66,8 +57,9 @@ export default function TicketForm({
       </div>
 
       <div>
-        <label>Description</label>
+        <label htmlFor="description">Description</label>
         <textarea
+          id="description"
           value={description}
           className="form-input"
           onInput={(e) => setDescription(e.currentTarget.value)}

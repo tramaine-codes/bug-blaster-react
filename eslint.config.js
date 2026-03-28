@@ -8,7 +8,7 @@ import tseslint from "typescript-eslint";
 export default defineConfig(
   { ignores: ["dist"] },
   {
-    extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+    extends: [eslint.configs.recommended, tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
