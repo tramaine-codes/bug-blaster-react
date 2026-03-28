@@ -12,8 +12,12 @@ export default function TicketForm({
   editingTicket,
 }: TicketFormProps) {
   const [title, setTitle] = useState(editingTicket?.title ?? "");
-  const [description, setDescription] = useState(editingTicket?.description ?? "");
-  const [priority, setPriority] = useState<"1" | "2" | "3">(editingTicket?.priority ?? "1");
+  const [description, setDescription] = useState(
+    editingTicket?.description ?? "",
+  );
+  const [priority, setPriority] = useState<"1" | "2" | "3">(
+    editingTicket?.priority ?? "1",
+  );
 
   const priorityLabels = {
     1: "Low",
@@ -27,7 +31,7 @@ export default function TicketForm({
     setPriority("1");
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     dispatch({
