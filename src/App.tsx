@@ -18,7 +18,11 @@ export default function App() {
       <div className="container">
         <h1>Bug Blaster</h1>
 
-        <TicketForm key={state.editingTicket?.id ?? "new"} dispatch={dispatch} editingTicket={state.editingTicket} />
+        <TicketForm
+          key={state.editingTicket?.id ?? "new"}
+          dispatch={dispatch}
+          editingTicket={state.editingTicket}
+        />
 
         {state.tickets.length > 0 && (
           <div className="results">
